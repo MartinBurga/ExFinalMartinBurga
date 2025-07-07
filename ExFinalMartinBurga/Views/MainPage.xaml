@@ -8,8 +8,35 @@
             <Label 
                  Text="MartinBurga15/11/2004"
                  VerticalOptions="Center" 
+                 FontSize="30"
+                 FontAttributes="Bold"
                  HorizontalOptions="Center" />
-            
+            <Entry
+                Placeholder="Ingresar Dispositivo" 
+                Text="{Binding Dispositivo}"
+                />
+            <Entry
+                Placeholder="Ingresar Marca" 
+                Text="{Binding Marca}"
+                />
+            <Label
+                Text="Posee Garantia?"
+                HorizontalOptions="Center" />
+            <Switch
+                IsToggled="{Binding GarantiaActiva}"
+                HorizontalOptions="Center"
+                VerticalOptions="Center" />
+            <Entry
+                Placeholder="Vida util (años)" 
+                Keyboard="Numeric"
+                Text="{Binding VidaUtil}"
+            />
+            <Button
+                Text="Guardar"
+                Command="{Binding Guardar}"
+                HorizontalOptions="Center"
+                VerticalOptions="Center" />
+
         </VerticalStackLayout>
     </ScrollView>
 
