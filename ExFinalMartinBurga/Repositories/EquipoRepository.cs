@@ -13,25 +13,61 @@ namespace ExFinalMartinBurga.Repositories
     {
         private SQLiteAsyncConnection _connection;
         private string _dbPath = FileSystem.AppDataDirectory + "/equipos.db3";
-        public void Init()
+
+        public EquipoRepository()
         {
-            throw new NotImplementedException();
-        }
-        public Task<List<Equipo>> DevuelveEquipos()
-        {
-            throw new NotImplementedException();
+            Init();
         }
 
-        public Task<bool> EliminarEquipos(int id)
+        public async void Init()
         {
-            throw new NotImplementedException();
+            if (_connection != null)
+            {
+                return;
+            }
+            _connection = new SQLiteAsyncConnection(_dbPath);
+
+            await _connection.CreateTableAsync<Equipo>();
         }
 
-        public Task<bool> GuardarEquipos(Equipo equipo)
+
+        public async Task<List<Equipo>> DevuelveEquipos()
         {
-            throw new NotImplementedException();
+            try
+            {
+                List<Equipo> equipos = await _connection.Table<Equipo>().ToListAsync();
+                return equipos;
+            }
+            catch (Exception)
+            {
+                throw;
+            }
         }
 
-        
+        public async Task<bool> EliminarEquipos(int id)
+        {
+            try
+            {
+                await _connection.DeleteAsync<Equipo>(id);
+                return true;
+            }
+            catch (Exception)
+            {
+                return false;
+            }
+        }
+
+        public async Task<bool> GuardarEquipos(Equipo equipo)
+        {
+            try
+            {
+                await _connection.InsertAsync(equipo);
+                return true;
+            }
+            catch (Exception)
+            {
+                return false;
+            }
+        }
     }
 }
