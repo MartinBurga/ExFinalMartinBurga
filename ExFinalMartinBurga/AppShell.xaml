@@ -7,9 +7,21 @@
     Shell.FlyoutBehavior="Disabled"
     Title="ExFinalMartinBurga">
 
-    <ShellContent
-        Title="Home"
-        ContentTemplate="{DataTemplate local:MainPage}"
-        Route="MainPage" />
+    <TabBar>
+        <ShellContent
+            Title="Agregar"
+            Icon="add.png"
+            ContentTemplate="{DataTemplate views:AgregarEquipoPage}" />
+
+        <ShellContent
+            Title="Equipos"
+            Icon="list.png"
+            ContentTemplate="{DataTemplate views:ListaEquiposPage}" />
+
+        <ShellContent
+            Title="Logs"
+            Icon="file.png"
+            ContentTemplate="{DataTemplate views:LogRegistroPage}" />
+    </TabBar>
 
 </Shell>
