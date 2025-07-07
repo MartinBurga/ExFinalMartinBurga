@@ -40,7 +40,7 @@ namespace ExFinalMartinBurga.ViewModels
             
         }
 
-
+        
         public event PropertyChangedEventHandler? PropertyChanged;
     }
 }

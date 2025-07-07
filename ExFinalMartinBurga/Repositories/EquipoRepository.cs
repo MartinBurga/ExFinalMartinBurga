@@ -61,7 +61,7 @@ namespace ExFinalMartinBurga.Repositories
             try
             {
                 await _connection.InsertAsync(equipo);
-                string logPath = Path.Combine(FileSystem.AppDataDirectory, "MartinBurga.txt");
+                string logPath = Path.Combine(FileSystem.AppDataDirectory, "Burga.txt");
                 File.AppendAllText(logPath, $"{DateTime.Now}: Equipo guardado: {equipo.Dispositivo}, Marca: {equipo.Marca}, Garantía Activa: {equipo.GarantiaActiva}, Vida Útil: {equipo.VidaUtil}\n");
                 return true;
             }
