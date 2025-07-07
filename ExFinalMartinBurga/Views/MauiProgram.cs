@@ -1,6 +1,6 @@
 ﻿using Microsoft.Extensions.Logging;
 
-namespace ExFinalMartinBurga;
+namespace ExFinalMartinBurga.Views;
 
 public static class MauiProgram
 {

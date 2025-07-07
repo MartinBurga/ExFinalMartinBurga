@@ -11,7 +11,7 @@ namespace ExFinalMartinBurga.Repositories
 {
     class EquipoRepository : IEquipoServices
     {
-        private SQLiteAsyncConnection _connection;
+        private SQLiteAsyncConnection _connection = null!;
         private string _dbPath = FileSystem.AppDataDirectory + "/equipos.db3";
 
         public EquipoRepository()
@@ -29,7 +29,6 @@ namespace ExFinalMartinBurga.Repositories
 
             await _connection.CreateTableAsync<Equipo>();
         }
-
 
         public async Task<List<Equipo>> DevuelveEquipos()
         {
@@ -62,6 +61,8 @@ namespace ExFinalMartinBurga.Repositories
             try
             {
                 await _connection.InsertAsync(equipo);
+                string logPath = Path.Combine(FileSystem.AppDataDirectory, "MartinBurga.txt");
+                File.AppendAllText(logPath, $"{DateTime.Now}: Equipo guardado: {equipo.Dispositivo}, Marca: {equipo.Marca}, Garantía Activa: {equipo.GarantiaActiva}, Vida Útil: {equipo.VidaUtil}\n");
                 return true;
             }
             catch (Exception)
