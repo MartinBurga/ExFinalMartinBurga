@@ -11,14 +11,14 @@ namespace ExFinalMartinBurga.Models
     class Equipo
     {
         [AutoIncrement: PrimaryKey]
-        string Dispositivo { get; set; }
+        public int Id { get; set; }
+        [NotNull, MaxLength(100)]
+        public string Dispositivo { get; set; }
+        [NotNull, MaxLength(50)]
+        public string Marca { get; set; }
         [NotNull]
-        string Marca { get; set; }
+        public bool GarantiaActiva { get; set; }
         [NotNull]
-        bool GarantiaActiva { get; set; }
-        [NotNull]
-        int VidaUtil { get; set; }
-        [NotNull]
-
+        public int VidaUtil { get; set; }
     }
 }
